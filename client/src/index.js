@@ -9,9 +9,11 @@ import Signup from './components/auth/Signup';
 import BaseLayout from './components/layout/BaseLayout';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import  './assets/styles.scss';
-import {createStore} from 'redux';
+import {createStore, applyMiddleware, compose} from 'redux';
+import reduxThunk from 'redux-thunk';
 import {Provider} from 'react-redux';
-import reducer from './reducers/reducer';
+import reducer from './reducers/index';
+import requireAuth from './requireAuth';
 import {
   BrowserRouter as Router,
   Route, Switch
@@ -20,7 +22,10 @@ import {
 
 // initializing redux store
 // requires a reducer. Second argument is for redux dev-tools extension.
-let store = createStore(reducer,  window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__());
+let store = createStore(reducer, undefined, 
+  compose(
+    applyMiddleware(reduxThunk),
+    window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()));
 
 
 //provider hooks react to redux.  
@@ -35,7 +40,7 @@ ReactDOM.render(
             <Route exact path='/' component={App}/>
             <Route path='/welcome' component={Welcome}/>
             <Route path='/signup' component={Signup}/>
-            <Route path='/feature' component={Feature}/>
+            <Route path='/feature' component={requireAuth(Feature)}/>
             <Route path='/signout' component={Signout}/>
             <Route path='/signin' component={Signin}/>
           </Switch>

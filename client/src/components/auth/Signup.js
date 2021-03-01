@@ -1,10 +1,22 @@
-import React from "react";
+import React, {useState} from "react";
 import { Link } from 'react-router-dom';
-
-//reduxForm = higherOrderComponents, Field=input tag
-import {reduxForm, Field} from 'redux-form';
+import {useDispatch} from 'react-redux';
+import {signUp} from '../../actions/index';
 
 const Signup = () => {
+
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+
+  const dispatch = useDispatch();
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    // call action
+    // pass the email address and password to out action
+    dispatch(signUp({email: email, password: password}));
+  }
 
   return (
   <div className="mt-5">
@@ -17,20 +29,14 @@ const Signup = () => {
 
             <h2>Sign Up</h2>
 
-            <form action="" method="post" className="form">
+            <form onSubmit={handleSubmit} className="form">
 
               <div className="form__field">
-                <input type="email" placeholder="enter email address" />
-                <Field 
-                  name="email"
-                  type="text"
-                  component="input"
-                  autoComplete="none"
-                />
+                <input type="email" onChange={(e) => setEmail(e.target.value)} value={email} placeholder="enter email address" />
               </div>
 
               <div className="form__field">
-                <input type="password" placeholder="enter password" />
+                <input type="password" onChange={(e) => setPassword(e.target.value)} value={password} placeholder="enter password" />
               </div>
 
               <div className="form__field">
@@ -48,4 +54,4 @@ const Signup = () => {
   </div>);
 };
 
-export default reduxForm()(Signup);
+export default Signup;

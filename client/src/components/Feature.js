@@ -1,6 +1,8 @@
 import React from "react";
 
 const Feature = () => {
+
+
   return <div style={{height: "100vh"}} className="d-flex flex-column justify-content-center align-items-center">
   <h1 className="text-white">Feature Page</h1>
 
