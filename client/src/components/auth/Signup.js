@@ -1,5 +1,8 @@
 import React from "react";
-import { Link } from 'react-router-dom'
+import { Link } from 'react-router-dom';
+
+//reduxForm = higherOrderComponents, Field=input tag
+import {reduxForm, Field} from 'redux-form';
 
 const Signup = () => {
 
@@ -18,6 +21,12 @@ const Signup = () => {
 
               <div className="form__field">
                 <input type="email" placeholder="enter email address" />
+                <Field 
+                  name="email"
+                  type="text"
+                  component="input"
+                  autoComplete="none"
+                />
               </div>
 
               <div className="form__field">
@@ -39,4 +48,4 @@ const Signup = () => {
   </div>);
 };
 
-export default Signup;
+export default reduxForm()(Signup);
