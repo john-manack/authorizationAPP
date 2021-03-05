@@ -32,7 +32,7 @@ export const signUp = (formData, cb) => {
 }
 
 // logging into application
-export const signin = (formData) => {
+export const signin = (formData, cb) => {
     return async dispatch => {
 
         try {
@@ -42,6 +42,8 @@ export const signin = (formData) => {
             console.log('signin', response.data.token);
 
             localStorage.setItem('token', response.data.token);
+
+            cb();
 
         } catch (error) {
             
@@ -61,4 +63,5 @@ export const signout = () => {
         type: "AUTH_USER",
         data: ''
     }
+
 }

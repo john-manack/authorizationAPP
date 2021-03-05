@@ -15,9 +15,9 @@ const Signin = () => {
     e.preventDefault();
 
     //dispatch(signup(), cb)
-    dispatch(signin({email, password}), () => {
+    dispatch(signin({email, password}, () => {
       history.push('/welcome')
-    });
+    }));
     
   }
 

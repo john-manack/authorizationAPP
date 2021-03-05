@@ -1,4 +1,5 @@
 import React from "react";
+import {useHistory} from 'react-router-dom';
 import {useDispatch} from 'react-redux';
 import {signout} from '../../actions/index';
 
@@ -6,9 +7,11 @@ import {signout} from '../../actions/index';
 const Signout = () => {
 
   const dispatch = useDispatch();
+  const history = useHistory();
   
-  const logout = (params) => {
+  const logout = () => {
     dispatch(signout());
+    history.push('/signin');
   }
   
   return <div style={{height: "100vh"}} className="d-flex flex-column justify-content-center align-items-center">

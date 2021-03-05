@@ -1,5 +1,5 @@
 import React, {useState} from "react";
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import {useDispatch} from 'react-redux';
 import {signUp} from '../../actions/index';
 
@@ -9,13 +9,17 @@ const Signup = () => {
   const [password, setPassword] = useState('');
 
   const dispatch = useDispatch();
+  const history = useHistory();
 
   const handleSubmit = (e) => {
     e.preventDefault();
 
     // call action
     // pass the email address and password to out action
-    dispatch(signUp({email: email, password: password}));
+    dispatch(signUp({email: email, password: password}, () => {
+      console.log('pushing to another page')
+      history.push('/welcome');
+    }));
   }
 
   return (
