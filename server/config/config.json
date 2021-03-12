@@ -1,9 +1,0 @@
-{
-  "development": {
-    "username": "kylmzxtb",
-    "password": "2jrgrk5131sLr0M_6tIasvAUqqcpTuGl",
-    "database": "kylmzxtb",
-    "host": "ziggy.db.elephantsql.com",
-    "dialect": "postgres"
-  }
-}
