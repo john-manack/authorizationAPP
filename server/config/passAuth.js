@@ -17,19 +17,19 @@ const config = require('../secrets'); // gives access to jwt secret
  */
 
 
- /**
-  * local strategy
-  * email and password validations
-  */
+/**
+ * local strategy
+ * email and password validations
+ */
 
-  //options to override username field
-  let options = {
-      
-  }
- let localLogin = new  {
-     try {
-        // check to see if email is in our db
-        let records = await db.user.findAll();
+//options to override username field
+let options = {
+    usernameField: 'email',
+}
+let localLogin = new  LocalStrategy(options, async (email, password, done) => {
+    try {
+    // check to see if email is in our db
+        let records = await db.user.findAll({where: {email: email}});
 
         if(records !== null) {
             //encrypt password and compare to password in db
@@ -59,22 +59,22 @@ const config = require('../secrets'); // gives access to jwt secret
             return done(null, false);
         }
 
-     } catch (error) {
-         //something in database retrieval
-        return done(error);
-     }
+    } catch (error) {
+        //something in database retrieval
+    return done(error);
+    }
+});
 
- }
- );
+/**
+ * jwt strategy
+ * validating token
+ */
+let jwtOptions = {
+    jwtFromRequest: ExtractJwt.fromHeader('authorization'),
+    secretOrKey: config.secret,
+}
 
- /**
-  * jwt strategy
-  * validating token
-  */
- let jwtOptions = {
-     
- }
- let jwtLogin = new  {
+let jwtLogin = new JwtStrategy(jwtOptions, async (payload, done) => {
     try {
         let user = await db.user.findByPk(payload.sub)
         if(user){
@@ -87,8 +87,7 @@ const config = require('../secrets'); // gives access to jwt secret
     } catch (error) {
         return done(err);
     }
-    
- });
+});
 
- passport.use(localLogin);
- passport.use(jwtLogin);
+passport.use(localLogin);
+passport.use(jwtLogin);

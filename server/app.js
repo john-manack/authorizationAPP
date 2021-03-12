@@ -10,5 +10,7 @@ app.use(function(req, res, next) {
 app.use(require('./routes/authentications'));
 
 
-//MISSING SOMETHING!!!
+app.listen(3001, () => {
+  console.log('Server running on https://localhost:3001');
+})
 
