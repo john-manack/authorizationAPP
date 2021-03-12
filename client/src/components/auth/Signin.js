@@ -11,15 +11,7 @@ const Signin = () => {
   const dispatch = useDispatch();
   const history = useHistory();
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-
-    //dispatch(signup(), cb)
-    dispatch(signin({email, password}, () => {
-      history.push('/feature')
-    }));
-    
-  }
+  
 
   return( 
   <div className="mt-5">

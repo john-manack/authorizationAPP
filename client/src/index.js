@@ -36,14 +36,7 @@ ReactDOM.render(
     <Provider store={store}>
     <Router>
       <BaseLayout>
-          <Switch>
-            <Route exact path='/' component={App}/>
-            <Route path='/welcome' component={Welcome}/>
-            <Route path='/signup' component={Signup}/>
-            <Route path='/feature' component={requireAuth(Feature)}/>
-            <Route path='/signout' component={Signout}/>
-            <Route path='/signin' component={Signin}/>
-          </Switch>
+          
       </BaseLayout>
       </Router>
       </Provider>
