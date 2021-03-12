@@ -15,7 +15,7 @@ export const signUp = (formData, cb) => {
     return async dispatch => {
         try {
             //formData will put on header
-            let response = await axios.post('http://localhost:3001/signup', formData);
+            let response = await axios.post('http://localhost:3333/signup', formData);
             console.log(response.data.token); //token
 
             //dispatch action to reducer
@@ -36,7 +36,7 @@ export const signin = (formData, cb) => {
     return async dispatch => {
 
         try {
-            let response = await axios.post('http://localhost:3001/signin', formData)
+            let response = await axios.post('http://localhost:3333/signin', formData)
 
             dispatch({type: "AUTH_USER", data: response.data.token})
             console.log('signin', response.data.token);

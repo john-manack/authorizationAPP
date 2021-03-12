@@ -9,8 +9,8 @@ app.use(function(req, res, next) {
 
 app.use(require('./routes/authentications'));
 
-app.listen(3001, () => {
-    console.log(`listening on port 3001`);
+app.listen(3333, () => {
+    console.log(`YO Joe!  Coming in hot on 3333`);
 });
 
 //const jwt = require('jwt-simple'); // create a jwt token
