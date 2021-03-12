@@ -8,16 +8,16 @@ const bcrypt = require('bcryptjs');
 const db = require('../models');
 
 // import secret for jwt
-const config = require('../secrets');
+
 
 //scrape email and password from request header
 router.use(express.urlencoded({ extended: false }));
 router.use(express.json());
 
 // used to create a jwt token
-const jwt = require('jwt-simple');
 
-const passport = require('passport');
+
+
 require('../config/passAuth')
 
 let requireSignIn = passport.authenticate('local', {session: false});
@@ -29,8 +29,7 @@ let requireAuth = passport.authenticate('jwt', {session: false});
  *  This function returns a jwt 
  */
 const token = (user) => {
-    let timestamp = new Date().getTime(); // current time
-    return jwt.encode({sub: user.id, iat: timestamp}, config.secret);
+    // Missing stuff
 }
 
 

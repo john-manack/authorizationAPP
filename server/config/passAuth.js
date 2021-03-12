@@ -24,12 +24,12 @@ const config = require('../secrets'); // gives access to jwt secret
 
   //options to override username field
   let options = {
-      usernameField: 'email'
+      
   }
- let localLogin = new LocalStrategy(options,async (email, password, done) => {
+ let localLogin = new  {
      try {
         // check to see if email is in our db
-        let records = await db.user.findAll({where: {email: email}});
+        let records = await db.user.findAll();
 
         if(records !== null) {
             //encrypt password and compare to password in db
@@ -72,10 +72,9 @@ const config = require('../secrets'); // gives access to jwt secret
   * validating token
   */
  let jwtOptions = {
-     jwtFromRequest: ExtractJwt.fromHeader('authorization'),
-     secretOrKey: config.secret
+     
  }
- let jwtLogin = new JwtStrategy(jwtOptions, async (payload, done) => {
+ let jwtLogin = new  {
     try {
         let user = await db.user.findByPk(payload.sub)
         if(user){

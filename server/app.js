@@ -9,30 +9,6 @@ app.use(function(req, res, next) {
 
 app.use(require('./routes/authentications'));
 
-app.listen(3333, () => {
-    console.log(`YO Joe!  Coming in hot on 3333`);
-});
 
-//const jwt = require('jwt-simple'); // create a jwt token
+//MISSING SOMETHING!!!
 
-// user information
-// let userInfo = {
-//     id: '12345',
-//     userName: 'Chris',
-//     email: 'me@me.com',
-// };
-
-// create a function that returns a jwt token
-// const token = (user) => {
-//     let timestamp = new Date().getTime(); //current time
-//     return jwt.encode(
-//         { sub: user.id, name: user.userName, iat: timestamp },
-//         'secretfortoken'
-//     ); // encode creates token
-// };
-
-// call function and pass our user
-
-// let jwtToken = token(userInfo);
-
-// console.log(jwtToken);

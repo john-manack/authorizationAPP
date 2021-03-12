@@ -36,7 +36,7 @@ ReactDOM.render(
     <Provider store={store}>
     <Router>
       <BaseLayout>
-          
+          {/* Missing Stuff */}
       </BaseLayout>
       </Router>
       </Provider>
