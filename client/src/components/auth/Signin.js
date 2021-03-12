@@ -16,7 +16,7 @@ const Signin = () => {
 
     //dispatch(signup(), cb)
     dispatch(signin({email, password}, () => {
-      history.push('/welcome')
+      history.push('/feature')
     }));
     
   }
